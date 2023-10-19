@@ -1,0 +1,11 @@
+#react-js 
+
+FROM node:20-bullseye-slim
+WORKDIR /app
+# angular runs using 'ng serve'. To fetch this:
+RUN npm install -g @angular/cli@13
+COPY package.json package-lock.json ./
+RUN npm ci
+EXPOSE 80
+COPY . .
+CMD ["ng", "serve", "--host", "0.0.0.0"]
